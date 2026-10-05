@@ -153,7 +153,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(noctCall .. "brightness-down"),
 -------------------
 
 -- Screen Capture
-hl.bind(mainMod .. " + P",     hl.dsp.exec_cmd("hyprpicker -a -n"))
+hl.bind(mainMod .. " + O",     hl.dsp.exec_cmd("hyprpicker -a -n"))
 hl.bind("Print",               hl.dsp.exec_cmd(noctCall .. "screenshot-region"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(noctCall .. "screenshot-fullscreen"))
 
@@ -165,6 +165,9 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(noctCall .. "panel-toggle clipboard")
 
 -- Notifications
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center notifications"))
+
+-- Player
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center media"))
 
 -- Weather
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center weather"))
