@@ -4,12 +4,12 @@ hl.workspace_rule({ workspace = "name:gaming", monitor = PRIMARY_MONITOR, defaul
 hl.workspace_rule({ workspace = "1", monitor = MONITOR1, default = true, persistent = true })
 hl.workspace_rule({ workspace = "2", monitor = MONITOR1, default = false, persistent = true })
 hl.workspace_rule({ workspace = "3", monitor = MONITOR1, default = false, persistent = true })
-hl.workspace_rule({ workspace = "4", monitor = MONITOR1, default = false, persistent = true })
-hl.workspace_rule({ workspace = "5", monitor = MONITOR1, default = false, persistent = true })
-hl.workspace_rule({ workspace = "6", monitor = MONITOR2, default = true, persistent = true })
-hl.workspace_rule({ workspace = "7", monitor = MONITOR2, default = false, persistent = true })
-hl.workspace_rule({ workspace = "8", monitor = MONITOR2, default = false, persistent = true })
-hl.workspace_rule({ workspace = "9", monitor = MONITOR2, default = false, persistent = true })
+hl.workspace_rule({ workspace = "4", monitor = MONITOR1, default = false, persistent = false })
+hl.workspace_rule({ workspace = "5", monitor = MONITOR1, default = false, persistent = false })
+hl.workspace_rule({ workspace = "6", monitor = MONITOR2, default = true, persistent = true})
+hl.workspace_rule({ workspace = "7", monitor = MONITOR2, default = false, persistent = false})
+hl.workspace_rule({ workspace = "8", monitor = MONITOR2, default = false, persistent = false })
+hl.workspace_rule({ workspace = "9", monitor = MONITOR2, default = false, persistent = false })
 
 -- For other layouts such as scrolling, see example below
 -- hl.workspace_rule({ workspace = "1", monitor = MONITOR1, default = true, persistent = true, layout = scroling })

@@ -1,6 +1,5 @@
 local mainMod = "SUPER"
 local noctCall = "noctalia msg "
-local launchPrefix = "uwsm app -- " -- if you are not using UWSM, make this empty (e.g. "")
 
 ---------------------------
 ---- WINDOW MANAGEMENT ----
@@ -30,7 +29,9 @@ hl.bind(mainMod .. " + SHIFT + Down",                 hl.dsp.window.move({ direc
 
 hl.bind(mainMod .. " + SHIFT + CONTROL + 1",                    hl.dsp.window.move({ monitor = MONITOR1 }))
 hl.bind(mainMod .. " + SHIFT + CONTROL + 2",                    hl.dsp.window.move({ monitor = MONITOR2 }))
-hl.bind(mainMod .. " + SHIFT + CONTROL + 3",                    hl.dsp.window.move({ monitor = MONITOR3 }))
+if MONITOR3 then
+    hl.bind(mainMod .. " + SHIFT + CONTROL + 3", hl.dsp.window.move({ monitor = MONITOR3 }))
+end
 
 hl.bind(mainMod .. " + SHIFT + CONTROL + mouse_up",             hl.dsp.window.move({ monitor = "-1" }))
 hl.bind(mainMod .. " + SHIFT + CONTROL + mouse_down",           hl.dsp.window.move({ monitor = "+1" }))
@@ -59,13 +60,7 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize())
 -- Zoom
 local function zoomfunction(value)
     local zoomvalue = hl.get_config("cursor:zoom_factor")
-    if (zoomvalue + value) > 3.0 then
-        hl.config({ cursor = { zoom_factor = 3.0 } })
-    elseif (zoomvalue + value) < 1.0 then
-        hl.config({ cursor = { zoom_factor = 1.0 } })
-    else
-        hl.config({ cursor = { zoom_factor = zoomvalue + value } })
-    end
+    hl.config({ cursor = { zoom_factor = math.max(1.0, math.min(3.0, zoomvalue + value)) } })
 end
 hl.bind(mainMod .. " + Minus", function() zoomfunction(-0.3) end, { repeating = true})
 hl.bind(mainMod .. " + Plus", function() zoomfunction(0.3) end, { repeating = true })
@@ -113,14 +108,14 @@ hl.bind(mainMod .. " + S",              hl.dsp.workspace.toggle_special())
 ---- LAUNCHER ----
 ------------------
 
-hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd(launchPrefix .. TERMINAL))
-hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd(launchPrefix .. FILE_MANAGER))
-hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd(launchPrefix .. EDITOR))
-hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
-hl.bind("XF86Calculator",           hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
-hl.bind(mainMod .. " + SHIFT + f23",hl.dsp.exec_cmd(launchPrefix .. BROWSER))
-hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e btop"))
-hl.bind(mainMod .. " + SHIFT + A",  hl.dsp.exec_cmd(launchPrefix .. TERMINAL .. " -e ani-cli"))
+hl.bind(mainMod .. " + Return",     hl.dsp.exec_cmd(LAUNCH_PREFIX .. TERMINAL))
+hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd(LAUNCH_PREFIX .. FILE_MANAGER))
+hl.bind(mainMod .. " + T",          hl.dsp.exec_cmd(LAUNCH_PREFIX .. EDITOR))
+hl.bind(mainMod .. " + C",          hl.dsp.exec_cmd(LAUNCH_PREFIX .. CALCULATOR))
+hl.bind("XF86Calculator",           hl.dsp.exec_cmd(LAUNCH_PREFIX .. CALCULATOR))
+-- hl.bind(mainMod .. " + SHIFT + f23",hl.dsp.exec_cmd(LAUNCH_PREFIX .. BROWSER))
+hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(LAUNCH_PREFIX .. TERMINAL .. " -e btop"))
+hl.bind(mainMod .. " + SHIFT + A",  hl.dsp.exec_cmd(LAUNCH_PREFIX .. TERMINAL .. " -e ani-cli"))
 hl.bind(mainMod .. " + Z",          hl.dsp.exec_cmd(noctCall .. "settings-toggle"))
 hl.bind(mainMod .. " + X",          hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center"))
 hl.bind(mainMod .. " + Space",      hl.dsp.exec_cmd(noctCall .. "panel-toggle launcher"))

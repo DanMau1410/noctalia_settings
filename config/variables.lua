@@ -15,3 +15,6 @@ PRIMARY_MONITOR = MONITOR2
 
 -- Workspaces
 NUM_WPM = 10 -- Number of workspaces per monitor (Max 10)
+
+-- Launching (if you are not using UWSM, make this empty, e.g. "")
+LAUNCH_PREFIX = "uwsm app -- "

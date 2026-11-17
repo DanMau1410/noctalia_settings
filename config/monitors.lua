@@ -16,11 +16,12 @@ hl.monitor({
 
 hl.monitor({
     output      = MONITOR2,
-    mode        = "preferred",
-    position    = "auto-left",
+    mode        = "2560x1440@144",
+    --mode	= "preferred",
+    position    = "auto-right",
     scale       = "1",
-    bitdepth    = 8,
-    vrr         = 0,
+    --bitdepth    = 8,
+    --vrr         = 0,
 })
 
 hl.monitor({
